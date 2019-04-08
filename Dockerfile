@@ -55,6 +55,7 @@ RUN apk add --no-cache \
 
 RUN adduser -u 1000 -S camunda -h /camunda -s /bin/bash -D camunda
 RUN chown camunda:root /camunda && chmod 0775 /camunda
+
 WORKDIR /camunda
 USER camunda
 
