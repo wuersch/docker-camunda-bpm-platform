@@ -67,3 +67,4 @@ ENTRYPOINT ["/sbin/tini", "--"]
 CMD ["./camunda.sh"]
 
 COPY --chown=camunda:root --from=builder /camunda .
+RUN chmod -R g+r .
