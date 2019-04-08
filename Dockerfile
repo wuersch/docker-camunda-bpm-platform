@@ -53,9 +53,10 @@ RUN apk add --no-cache \
       "https://raw.githubusercontent.com/vishnubob/wait-for-it/db049716e42767d39961e95dd9696103dca813f1/wait-for-it.sh" \
     && chmod +x /usr/local/bin/wait-for-it.sh
 
-RUN adduser -u 1000 -S camunda --gid 0 -h /camunda -s /bin/bash -D camunda
+RUN adduser -u 1000 -S camunda -h /camunda -s /bin/bash -D camunda
 WORKDIR /camunda
 USER camunda
+RUN chown camunda:root /camunda && chmod 0775 /camunda
 
 ENTRYPOINT ["/sbin/tini", "--"]
 CMD ["./camunda.sh"]
